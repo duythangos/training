@@ -1,0 +1,31 @@
+<div class="container">
+  <h2>Listing articles</h2> 
+  <p><%= link_to 'New article', new_article_path %></p>
+  
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Content</th>
+        <th>Image</th>
+        <th>Action</th>
+      </tr>    
+    </thead>
+    <tbody>
+      <% @articles.each do |article| %>
+        <tr>
+          <td><%= article.id %></td>    
+          <td><%= article.title %></td>
+          <td><%= article.text %></td>
+          <td><%= image_tag article.avatar.url(:thumb) %></td>
+          <td><%= link_to 'Show', article_path(article) %>
+              <%= link_to 'Edit', edit_article_path(article) %>
+              <%= link_to 'Delete', article_path(article), method: :delete, data: {confirm: "Are you sure?"}  %>
+              <%= link_to "Export", article_csv_path(article, format: "csv"), data: {confirm: "Proceed to download"} %> </td>
+        </tr>
+      <% end %>    
+    </tbody>
+  </table>  
+  <%= will_paginate @articles %>
+</div>

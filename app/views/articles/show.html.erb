@@ -1,0 +1,50 @@
+<div class="row">
+<div class="container">
+
+<table class="table table-bordered">
+<h2>Article details</h2>
+<tbody>
+ <tr>
+  <th class="col-xs-1"> <strong>ID:</strong> </th>
+  <td> <%= @article.id %> </td>
+ </tr>
+ <tr>
+  <th> <strong>Title:</strong> </th>
+  <td> <%= @article.title %> </td>
+ </tr>
+ <tr>
+  <th> <strong>Text:</strong> </th>
+  <td> <%= @article.text %> </td>
+ </tr>
+ <tr>
+  <th> <strong>Avatar:</strong> </th>
+  <td> <%= image_tag @article.avatar.url, class: "img-thumbnail", size: "80x80" %> </td>
+ </tr>
+</tbody> 
+</table>
+
+<h2>Comments</h2>
+<%= render @article.comments %>
+ 
+<h2>Add a comment:</h2>
+<%= form_for([@article, @article.comments.build]) do |f| %>
+  <p>
+    <%= f.label :commenter %><br>
+    <%= f.text_field :commenter %>
+  </p>
+  <p>
+    <%= f.label :body %><br>
+    <%= f.text_area :body %>
+  </p>
+  <p>
+    <%= button_tag(type: 'submit', class: "btn btn-primary") do %>
+      <i class="icon-ok icon-white"></i> Comment
+    <% end %>
+  </p>    
+<% end %>
+ 
+<%= link_to 'Edit', edit_article_path(@article) %> |
+<%= link_to 'Back', articles_path %>
+  
+</div>  
+</div>
