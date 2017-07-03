@@ -13,13 +13,22 @@
 div {
 	overflow: auto;
 
-	tbody, th {
-		text-align: center;		
-	}
+	tbody {
+		text-align: center;								
+	}	
 
 	@media only screen and (max-width: 600px) {
-		.table {
-			background-color: green;
+		table {			
+			width: 100%;
 		}
+		td {
+        	display: block;
+        	width: 100%;
+    	}
+
+	    tr {
+	    	display: block;
+	    	margin-bottom: 30px;
+	    }
 	}	
 }
