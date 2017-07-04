@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   
   resources :articles do
-    get 'csv'
+    get 'export_file'
     resources :comments
   end
 

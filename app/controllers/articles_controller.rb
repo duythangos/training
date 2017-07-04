@@ -40,15 +40,25 @@ class ArticlesController < ApplicationController
     @article = Article.find(params[:id])
     @article.destroy
  
-    redirect_to articles_path
+    redirect_to root
   end  
 
-  def csv
+  def export_file
     @article = Article.find(params[:article_id])
-    respond_to do |format|
-      format.html
-      format.csv { send_data @article.to_csv, :filename => "#{@article.title}.csv" }
+    file = File.open("/home/local/ELARION/thangnpd/Desktop/#{@article.title}.txt", "w") do |f|
+      f.write "The content of article is #{@article.text}"
+      puts "Write file OKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK"
+      f.close
+      puts "File is close OKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK"
     end
+
+    redirect_to articles_path
+    puts "redirect success"
+
+    # respond_to do |format|
+    #   format.html
+    #   format.csv { send_data @article.to_csv, :filename => "#{@article.title}.csv" }
+    # end
   end
  
   private

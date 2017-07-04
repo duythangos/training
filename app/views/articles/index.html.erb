@@ -15,7 +15,7 @@
           <td>Action: <%= link_to 'Show', article_path(article) %>
               <%= link_to 'Edit', edit_article_path(article) %>
               <%= link_to 'Delete', article_path(article), method: :delete, data: {confirm: "Are you sure?"}  %>
-              <%= link_to "Export", article_csv_path(article, format: "csv"), data: {confirm: "Proceed to download"} %> </td>
+              <%= link_to "Export", article_export_file_path(article) %> </td>
         </tr>
       <% end %>    
     </tbody>
