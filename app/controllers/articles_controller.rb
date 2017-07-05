@@ -45,24 +45,14 @@ class ArticlesController < ApplicationController
 
   def export_file
     @article = Article.find(params[:article_id])
-    file = File.open("/home/local/ELARION/thangnpd/Desktop/#{@article.title}.txt", "w") do |f|
-      f.write "The content of article is #{@article.text}"
-      puts "Write file OKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK"
-      f.close
-      puts "File is close OKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK"
-    end
-
+    @article.delay(run_at: 1.minute.from_now).create_file(@article)
     redirect_to articles_path
-    puts "redirect success"
-
-    # respond_to do |format|
-    #   format.html
-    #   format.csv { send_data @article.to_csv, :filename => "#{@article.title}.csv" }
-    # end
-  end
+    
+    puts "redirect successssssssssssssssssssssssssssssssssss"    
+  end  
  
   private
     def article_params
       params.require(:article).permit(:title, :text, :avatar)
-    end
+    end    
 end

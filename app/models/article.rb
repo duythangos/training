@@ -6,12 +6,14 @@ class Article < ActiveRecord::Base
 
 	def status		
     	update_column :image_upload_status, true    	
-  	end
+  end
 
-  	def to_csv
-    CSV.generate do |csv|
-      csv << self.attributes.keys       
-      csv << self.attributes.values_at(*self.attributes.keys)      
+  def create_file(article)
+    file = File.open("/home/local/ELARION/thangnpd/Desktop/#{article.title}.txt", "w") do |f|
+    f.write "The content of article is #{article.text}"
+    puts "Write file OKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK"
+    f.close
+    puts "File is close OKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK"
     end
   end  
 
