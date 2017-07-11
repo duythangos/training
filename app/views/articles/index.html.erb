@@ -1,3 +1,11 @@
+<!-- <script type="text/javascript" charset="utf-8">
+  $(document).ready(function() {
+    $("button").click(function(){
+      $("p").hide();
+      console.log("dddd");
+    });
+  });
+</script> -->
 <div class="container">
   <h2>Listing articles</h2> 
   <p><%= link_to 'New article', new_article_path %></p>
@@ -19,6 +27,12 @@
         </tr>
       <% end %>    
     </tbody>
-  </table>  
+  </table>
+
+  <div class="sent">
+    <p id="demo">outside </p>     
+    <button type="button">Change</button>
+  </div> 
+
   <%= will_paginate @articles %>
 </div>

@@ -5,7 +5,7 @@ class Article < ActiveRecord::Base
 	validates :title, presence: true, length: { minimum: 5 }		
 
   def create_file(article)
-    file = File.open("/#{Rails.root}/export_file/#{article.title}.txt", "w") do |f|
+    file = File.open("#{Rails.root}/export_file/#{article.title}.txt", "w") do |f|
       f.write "The content of article is #{article.text}"
       puts "Write file OKKKKKKKKKKKKKKKKKKKKKKKKKKKKKKK"
       f.close

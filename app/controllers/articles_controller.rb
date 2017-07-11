@@ -44,7 +44,7 @@ class ArticlesController < ApplicationController
 
   def export_file
     @article = Article.find(params[:article_id])
-    @article.delay(run_at: 30.seconds.from_now).create_file(@article)
+    @article.delay(run_at: 30.seconds.from_now).create_file @article
     redirect_to articles_path
     
     puts "redirect successssssssssssssssssssssssssssssssssss"       
