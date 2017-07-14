@@ -6,7 +6,7 @@ $(document).on('turbolinks:load', function(){
   		url: '/articles/' + this.parentElement.id,
   		method: 'DELETE',
   		success: function(r){
-  		  alert("Delete successfully"); 		  
+  		  alert("Article was delete successfully"); 		  
   		}
   	  });		
   	}  	
