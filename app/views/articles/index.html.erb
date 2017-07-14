@@ -1,14 +1,8 @@
-<!-- <script type="text/javascript" charset="utf-8">
-  $(document).ready(function() {
-    $("button").click(function(){
-      $("p").hide();
-      console.log("dddd");
-    });
-  });
-</script> -->
 <div class="container">
   <h2>Listing articles</h2> 
   <p><%= link_to 'New article', new_article_path %></p>
+
+  <p id="msg"></p>
   
   <table class="table table-bordered">    
     <tbody>          
@@ -19,20 +13,15 @@
           <td>ID: <%= article.id %></td>    
           <td>Title: <%= article.title %></td>
           <td>Text: <%= article.text %></td>
-          <td>Img: <%= image_tag article.avatar.url(:thumb) %></td>
-          <td>Action: <%= link_to 'Show', article_path(article) %>
-              <%= link_to 'Edit', edit_article_path(article) %>
-              <%= link_to 'Delete', article_path(article), method: :delete, data: {confirm: "Are you sure?"}  %>
-              <%= link_to "Export", article_export_file_path(article) %> </td>
+          <!-- <td>Img: <%= image_tag article.avatar.url(:thumb) %></td> -->
+          <td id="<%= article.id %>">Action: <%= link_to 'Show', article_path(article) %>
+              <%= link_to 'Edit', edit_article_path(article) %>              
+              <%= link_to "Export", article_export_file_path(article) %>
+              <button class="delete">Delete</button> </td>
         </tr>
       <% end %>    
     </tbody>
-  </table>
-
-  <div class="sent">
-    <p id="demo">outside </p>     
-    <button type="button">Change</button>
-  </div> 
+  </table> 
 
   <%= will_paginate @articles %>
 </div>
