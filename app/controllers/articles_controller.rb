@@ -53,12 +53,23 @@ class ArticlesController < ApplicationController
     puts "redirect successssssssssssssssssssssssssssssssssss"
   end
 
+  def update_status
+    update_true
+    puts "Update successssssssssssssssssssssssssssssssssss"
+  end
+
   private
   def article_params
-    params.require(:article).permit(:title, :text, :avatar)
+    params.require(:article).permit(:title, :text, :avatar, :image_upload_status)
   end
 
   def find_id
     @article = Article.find(params[:id])
   end
+
+  def update_true
+    @article = Article.find(params[:article_id])
+    @article.update_column(:image_upload_status, 'true')
+  end
+
 end

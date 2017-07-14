@@ -5,9 +5,10 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'articles#index'
 
-  
+
   resources :articles do
     get 'export_file'
+    get 'update_status'
     resources :comments
   end
 
