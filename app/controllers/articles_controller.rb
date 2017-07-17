@@ -39,10 +39,7 @@ class ArticlesController < ApplicationController
 
   def destroy
     @article.destroy
-    respond_to do |format|
-      format.html { redirect_to root_path }
-      format.xml  { head :ok }
-    end
+    render json: {status: "delete success"}
   end
 
   def export_file

@@ -5,8 +5,9 @@ $(document).on('turbolinks:load', function(){
   	  $.ajax({
   		  url: '/articles/' + this.parentElement.id,
   		  method: 'DELETE',
-  		  success: function(r){
-  		    alert("Article was delete successfully"); 		  
+        dataType: 'json',
+  		  success: function(data){
+  		    alert(data.status); 		  
   		  }
   	  });		
   	}  	
