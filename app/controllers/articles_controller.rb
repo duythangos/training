@@ -54,8 +54,15 @@ class ArticlesController < ApplicationController
   end
 
   def update_status
-    update_true
-    puts "Update successssssssssssssssssssssssssssssssssss"
+    @article = Article.find(params[:article_id])
+    if @article.image_upload_status == true
+      render json: {status: "fail"}
+      puts "update NOTTTTTTTTTT okkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"
+    else
+      @article.update_column(:image_upload_status, 'true')
+      render json: {status: "ok"}
+      puts "update okkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"
+    end
   end
 
   private
@@ -65,11 +72,6 @@ class ArticlesController < ApplicationController
 
   def find_id
     @article = Article.find(params[:id])
-  end
-
-  def update_true
-    @article = Article.find(params[:article_id])
-    @article.update_column(:image_upload_status, 'true')
   end
 
 end
