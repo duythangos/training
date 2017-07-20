@@ -56,7 +56,7 @@ class ArticlesController < ApplicationController
       render json: {status: "fail"}
       puts "update NOTTTTTTTTTT okkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"
     else
-      @article.update_column(:image_upload_status, 'true')
+      @article.update_column(:image_upload_status, true)
       render json: {status: "ok"}
       puts "update okkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk"
     end
